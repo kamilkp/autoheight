@@ -10,7 +10,7 @@ There are three files in the `src` directory:
 
 The functionality is the same in all three versions.
 
-[DEMO](https://github.com/kamilkp/autoheight)
+[DEMO](http://kamilkp.github.io/autoheight/)
 
 No dummy texareas created!
 ===========
