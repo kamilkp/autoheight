@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>autoheight.js</title>
+	<script type="text/javascript" src="../js/autoheight.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			var textareas = document.getElementsByTagName('textarea');
+			Array.prototype.slice.call(textareas).forEach(function(textarea){
+				autoheight(textarea);
+			});
+		}
+	</script>
+</head>
+<body>
+	<textarea>
+	</textarea>
+	<textarea>
+	</textarea>
+	<textarea>
+	</textarea>
+</body>
+</html>
