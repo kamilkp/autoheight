@@ -1,20 +1,44 @@
 <html>
 <head>
 	<title>jquery-autoheight.js</title>
+	<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?autoload=false&skin=sunburst"></script>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.js"></script>
 	<script type="text/javascript" src="../js/jquery-autoheight.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('textarea').autoheight();
 		});
+
+		window.onload = function(){
+			document.getElementById('source').innerText = 
+			['$(document).ready(function(){',
+			'	$(\'textarea\').autoheight();',
+			'});'].join('\n');
+			document.getElementById('source').className = "prettyprint";
+			PR.prettyPrint();
+		};
 	</script>
+	<link rel="stylesheet" type="text/css" href="../style/examples.css">
 </head>
 <body>
-	<textarea>
-	</textarea>
-	<textarea>
-	</textarea>
-	<textarea>
-	</textarea>
+	<h1>
+		<a href="https://github.com/kamilkp/autoheight">autoheight.js</a> used with jQuery
+	</h1>
+	<h2>Usage:</h2>
+	<p>
+		Just call <pre class="prettyprint">$('textarea').autoheight();</pre> or on any other jQuery object. The textarea will adjust it's height immediately and then it will do it automatically as the user types into that textarea. If for some reason you need to readjust it manually (e.g. when the value changed programatically) just call the same method again. The events listeners won't get attached twice.
+	</p>
+	<section class="row">
+		<div class="col-xs-4"><textarea placeholder="type here..."></textarea></div>
+		<div class="col-xs-4"><textarea placeholder="type here..."></textarea></div>
+		<div class="col-xs-4"><textarea placeholder="type here..."></textarea></div>
+	</section>
+	<h2>
+		Javascript needed to accomplish this:
+	</h2>
+	<section>
+		<pre id="source"></pre>
+	</section>
 </body>
 </html>

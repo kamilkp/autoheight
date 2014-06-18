@@ -1,0 +1,17 @@
+textarea{
+	width: 100%;
+}
+body{
+	padding: 50px 20px;
+}
+h1{
+	margin-bottom: 50px;
+}
+h2{
+	margin-top: 40px;
+}
+pre.prettyprint{
+	margin-left: 0;
+	margin-right: 0;
+	width: 100%;
+}
