@@ -1,0 +1,21 @@
+{
+  "name": "autoheight",
+  "version": "0.0.1",
+  "description": "Textareas with automatically adjusted height",
+  "homepage": "http://kamilkp.github.io/autoheight",
+  "author": {
+    "name": "Kamil Pekala",
+    "email": "kamilkp@gmail.com",
+    "url": "http://github.com/kamilkp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kamilkp/autoheight.git"
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "test": "grunt travis"
+  },
+  "dependencies": {}
+}
