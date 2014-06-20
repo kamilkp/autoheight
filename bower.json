@@ -1,0 +1,25 @@
+{
+  "name": "autoheight",
+  "version": "0.0.1",
+  "homepage": "http://kamilkp.github.io/autoheight/",
+  "authors": [
+    "Kamil Pękala <kamilkp@gmail.com>"
+  ],
+  "description": "Textareas with automatically adjusted height",
+  "main": "autoheight.js",
+  "keywords": [
+    "textarea",
+    "autosize",
+    "autoresize",
+    "autoheight",
+    "auto"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
