@@ -1,4 +1,4 @@
-autoheight.js
+autoheight.js [![Bower version](https://badge.fury.io/bo/autoheight.svg)](http://badge.fury.io/bo/autoheight)
 ==========
 
 Textareas with automatically adjusted height.
