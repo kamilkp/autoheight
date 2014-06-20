@@ -39,6 +39,9 @@
 	            // initial adjust
 	            adjust();
 
+	            // forced adjustment
+	            scope.$on('autoheight-adjust', adjust);
+
 	            function adjust(){
 	                if(isNaN(lineHeight)) lineHeight = getLineHeight(node);
 	                if(!(node.offsetHeight || node.offsetWidth)) return;

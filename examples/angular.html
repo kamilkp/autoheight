@@ -16,8 +16,20 @@
 			'	<div class="col-xs-4"><textarea autoheight placeholder="type here..."></textarea></div>',
 			'</section>'].join('\n');
 			document.getElementById('source').className = "prettyprint";
+			document.getElementById('source2').innerText = 
+			['var $rootScope = angular.element(document.documentElement).scope(); // because the ng-app attribute is on html element',
+			'window.onresize = function(){',
+			'	$rootScope.$broadcast(\'autoheight-adjust\');',
+			'};'].join('\n');
+			document.getElementById('source2').className = "prettyprint";
 			PR.prettyPrint();
+			
+			var $rootScope = angular.element(document.documentElement).scope(); // because the ng-app attribute is on html element
+			window.onresize = function(){
+				$rootScope.$broadcast('autoheight-adjust');
+			};
 		};
+
 	</script>
 	<link rel="stylesheet" type="text/css" href="../style/examples.css">
 </head>
@@ -25,20 +37,28 @@
 	<h1>
 		<a href="https://github.com/kamilkp/autoheight">autoheight.js</a> used with angularjs
 	</h1>
-	<h2>Usage:</h2>
-	<p>
-		Just put an <pre class="prettyprint">autoheight</pre> attribute on a textarea. Everything will just work.
-	</p>
-	<section class="row">
-		<div class="col-xs-4"><textarea autoheight placeholder="type here..."></textarea></div>
-		<div class="col-xs-4"><textarea autoheight placeholder="type here..."></textarea></div>
-		<div class="col-xs-4"><textarea autoheight placeholder="type here..."></textarea></div>
-	</section>
+	<div class="reversed">
+		<h2>Usage:</h2>
+		<p style="line-height: 25px;">
+			Just put an <span class="code">autoheight</span> attribute on a textarea. Everything will just work.<br>
+			If you need to manually trigger readjustment for some reason you can broadcast a <span class="code">'autoheight-adjust'</span> event from <span class="code">$rootScope</span>.
+		</p>
+		<section class="row">
+			<div class="col-xs-4"><textarea autoheight placeholder="type here..."></textarea></div>
+			<div class="col-xs-4"><textarea autoheight placeholder="type here..."></textarea></div>
+			<div class="col-xs-4"><textarea autoheight placeholder="type here..."></textarea></div>
+		</section>
+	</div>
 	<h2>
-		HTML used to accomplish this:
+		Code used to accomplish this:
 	</h2>
 	<section>
+		Markup
 		<pre id="source"></pre>
+	</section>
+	<section>
+		Javascript
+		<pre id="source2"></pre>
 	</section>
 </body>
 </html>

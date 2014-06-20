@@ -9,10 +9,18 @@
 		$(document).ready(function(){
 			$('textarea').autoheight();
 		});
+		$(window).resize(function(){
+			$('textarea').autoheight();
+		});
 
 		window.onload = function(){
 			document.getElementById('source').innerText = 
 			['$(document).ready(function(){',
+			'	$(\'textarea\').autoheight();',
+			'});',
+			'',
+			'// forcing readjustments on viewport resize',
+			'$(window).resize(function(){',
 			'	$(\'textarea\').autoheight();',
 			'});'].join('\n');
 			document.getElementById('source').className = "prettyprint";
@@ -25,15 +33,17 @@
 	<h1>
 		<a href="https://github.com/kamilkp/autoheight">autoheight.js</a> used with jQuery
 	</h1>
-	<h2>Usage:</h2>
-	<p>
-		Just call <pre class="prettyprint">$('textarea').autoheight();</pre> or on any other jQuery object. The textarea will adjust it's height immediately and then it will do it automatically as the user types into that textarea. If for some reason you need to readjust it manually (e.g. when the value changed programatically) just call the same method again. The events listeners won't get attached twice.
-	</p>
-	<section class="row">
-		<div class="col-xs-4"><textarea placeholder="type here..."></textarea></div>
-		<div class="col-xs-4"><textarea placeholder="type here..."></textarea></div>
-		<div class="col-xs-4"><textarea placeholder="type here..."></textarea></div>
-	</section>
+	<div class="reversed">
+		<h2>Usage:</h2>
+		<p style="line-height: 25px;">
+			Just call <span class="code">$('textarea').autoheight();</span> or on any other jQuery object. The textarea will adjust it's height immediately and then it will do it automatically as the user types into that textarea. If for some reason you need to readjust it manually (e.g. when the value changed programatically) just call the same method again. The events listeners won't get attached twice.
+		</p>
+		<section class="row">
+			<div class="col-xs-4"><textarea placeholder="type here..."></textarea></div>
+			<div class="col-xs-4"><textarea placeholder="type here..."></textarea></div>
+			<div class="col-xs-4"><textarea placeholder="type here..."></textarea></div>
+		</section>
+	</div>
 	<h2>
 		Javascript needed to accomplish this:
 	</h2>

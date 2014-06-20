@@ -3,15 +3,33 @@ textarea{
 }
 body{
 	padding: 50px 20px;
+	background-color: hsl(0, 0%, 13%);
+	color: white;
+	letter-spacing: 0.5;
 }
 h1{
 	margin-bottom: 50px;
 }
 h2{
-	margin-top: 40px;
+	/*margin-top: 40px;*/
 }
 pre.prettyprint{
 	margin-left: 0;
 	margin-right: 0;
 	width: 100%;
+	border: none;
+	tab-size: 4;
+}
+span.code{
+	padding: 5px 10px;
+	background-color: black;
+	color: white;
+	border-radius: 5px;
+	font-family: monospace;
+}
+.reversed{
+	background-color: white;
+	color: hsl(0, 0%, 20%);
+	margin: 0px -20px;
+	padding: 30px 20px;
 }
