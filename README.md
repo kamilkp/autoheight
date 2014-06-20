@@ -3,6 +3,8 @@ autoheight.js
 
 Textareas with automatically adjusted height.
 
+To install run `bower install autoheight`
+
 There are three files in the `src` directory:
   * autoheight.js - use it with pure javascript
   * jquery-autoheight.js - jquery plugin
@@ -10,7 +12,7 @@ There are three files in the `src` directory:
 
 The functionality is the same in all three versions.
 
-[DEMO](http://kamilkp.github.io/autoheight/)
+See the examples [here](http://kamilkp.github.io/autoheight/)
 
 No dummy texareas created!
 ===========
