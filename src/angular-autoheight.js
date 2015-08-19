@@ -8,7 +8,7 @@
 
 	if(angular == null) throw new Error('Angular is not defined!');
 
-	angular.module('autoheight', []).directive('autoheight', ['$sniffer', function($sniffer) {
+	var autoheightModule = angular.module('autoheight', []).directive('autoheight', ['$sniffer', function($sniffer) {
 	    return  {
 	        restrict: 'A',
 	        require: '?ngModel',
@@ -18,7 +18,7 @@
 
 	            // user input, copy, paste, cut occurrences
 	            element.on('input', adjust);
-	            element.on('change', adjust);	            
+	            element.on('change', adjust);
 
 	            if(ctrl){
 		            // view value changed from ngModelController - textarea content changed via javascript
@@ -68,5 +68,9 @@
 	angular.element(document.head).append(
 		'<style>[autoheight]{overflow: hidden; resize: none; box-sizing: border-box;}</style>'
 	);
+
+	if (typeof module !== 'undefined' && module.exports) {
+    module.exports = autoheightModule.name;
+  }
 
 })(window, document, window.angular);
