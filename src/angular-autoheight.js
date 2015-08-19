@@ -50,8 +50,9 @@
 	                var h = node.scrollHeight + // actual height defined by content
 	                        node.offsetHeight - // border size compensation
 	                        node.clientHeight; //       -- || --
+	                var isIE = $sniffer.msie || $sniffer.vendorPrefix && $sniffer.vendorPrefix.toLowerCase() === 'ms';
 	                node.style.height = Math.max(h, lineHeight) +
-	                                    ($sniffer.msie && lineHeight ? lineHeight : 0) + // ie extra row
+	                                    (isIE ? 1 : 0) + // ie quirk
 	                                    'px';
 	            }
 	        }
