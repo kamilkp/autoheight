@@ -1,12 +1,16 @@
 //
 // Copyright Kamil Pękala http://github.com/kamilkp
-// autoheight v0.0.1
+// angular-autoheight v0.0.4
 //
 ;(function(window, document, angular){
 	/* jshint eqnull:true */
 	/* jshint -W041 */
 
 	if(angular == null) throw new Error('Angular is not defined!');
+
+	function px2val(str) {
+		return +str.slice(0, -2);
+	}
 
 	var autoheightModule = angular.module('autoheight', []).directive('autoheight', ['$sniffer', function($sniffer) {
 	    return  {
@@ -15,6 +19,37 @@
 	        link: function (scope, element, attr, ctrl) {
 	            var node = element[0];
 	            var lineHeight = getLineHeight(node);
+	            var useClone = 'useClone' in attr;
+	            var clone;
+
+	            if (useClone) {
+        	      clone = document.createElement('textarea');
+					      var computedStyle = getComputedStyle(node);
+
+					      clone.style.border = '1px solid black';
+					      clone.style.borderWidth = computedStyle.borderTopWidth;
+					      clone.style.borderWidth = computedStyle.borderBottomWidth;
+					      clone.style.borderWidth = computedStyle.borderLeftWidth;
+					      clone.style.borderWidth = computedStyle.borderRightWidth;
+					      clone.style.width = (node.clientWidth + px2val(clone.style.borderLeftWidth) + px2val(clone.style.borderRightWidth)) + 'px';
+					      clone.style.height = '1px';
+					      clone.style.paddingTop = computedStyle.paddingTop;
+					      clone.style.paddingBottom = computedStyle.paddingBottom;
+					      clone.style.paddingLeft = computedStyle.paddingLeft;
+					      clone.style.paddingRight = computedStyle.paddingRight;
+					      clone.style.position = 'absolute';
+					      clone.style.top = '0px';
+					      clone.style.left = '-1000px';
+
+					      clone.style.fontFamily = computedStyle.fontFamily;
+					      clone.style.fontSize = computedStyle.fontSize;
+					      clone.style.lineHeight = computedStyle.lineHeight;
+					      document.body.appendChild(clone);
+
+					      scope.$on('$destroy', function() {
+					      	document.body.removeChild(clone);
+					      });
+	            }
 
 	            // user input, copy, paste, cut occurrences
 	            element.on('input', adjust);
@@ -43,6 +78,13 @@
 	            scope.$on('autoheight-adjust', adjust);
 
 	            function adjust(){
+	            	if (useClone) {
+	            		if (clone.value !== node.value) {
+	            			clone.value = node.value;
+	            			node.style.height = (clone.scrollHeight + px2val(clone.style.borderTopWidth) + px2val(clone.style.borderBottomWidth)) + 'px';
+	            		}
+	            	}
+	            	else {
 	                if(isNaN(lineHeight)) lineHeight = getLineHeight(node);
 	                if(!(node.offsetHeight || node.offsetWidth)) return;
 	                if(node.scrollHeight <= node.clientHeight)
@@ -54,6 +96,7 @@
 	                node.style.height = Math.max(h, lineHeight) +
 	                                    (isIE ? 1 : 0) + // ie quirk
 	                                    'px';
+	            	}
 	            }
 	        }
 	    };
