@@ -43,7 +43,9 @@
 
 					      clone.style.fontFamily = computedStyle.fontFamily;
 					      clone.style.fontSize = computedStyle.fontSize;
-					      clone.style.lineHeight = computedStyle.lineHeight;
+					      clone.style.boxSizing = computedStyle.boxSizing;
+					      clone.style.overflow = 'hidden';
+
 					      document.body.appendChild(clone);
 
 					      scope.$on('$destroy', function() {
